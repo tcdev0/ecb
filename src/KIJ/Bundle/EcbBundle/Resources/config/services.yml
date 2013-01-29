@@ -1,7 +1,6 @@
 parameters:
-#    kij_ecb.example.class: KIJ\Bundle\EcbBundle\Example
+    php_mag_ecb.httpclient.class: Guzzle\Http\Client
 
 services:
-#    kij_ecb.example:
-#        class: %kij_ecb.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    php_mag_ecb:
+        class: %php_mag_ecb.httpclient.class%
