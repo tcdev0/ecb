@@ -1,0 +1,7 @@
+parameters:
+#    kij_ecb.example.class: KIJ\Bundle\EcbBundle\Example
+
+services:
+#    kij_ecb.example:
+#        class: %kij_ecb.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
