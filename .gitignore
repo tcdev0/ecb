@@ -1,0 +1,13 @@
+.idea
+app/config/parameters.yml
+app/phpunit.xml
+web/bundles/*
+web/css/*
+app/bootstrap.php.cache
+app/cache/*
+app/logs/*
+build/
+vendor
+composer.phar
+composer.lock
+*.php~
