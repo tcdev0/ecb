@@ -1,6 +1,6 @@
 parameters:
     php_mag_ecb.httpclient.class: Guzzle\Http\Client
-    pgp_mag_ecb.parser.class:     KIJ\Bundle\EcbBundle\Ecb\Parser
+    php_mag_ecb.parser.class:     KIJ\Bundle\EcbBundle\Ecb\Parser
 
 services:
     php_mag_ecb:
