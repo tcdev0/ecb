@@ -3,14 +3,19 @@ parameters:
     php_mag_ecb.parser.class:     KIJ\Bundle\EcbBundle\Ecb\Parser
     php_mag_ecb.adapter.class:    KIJ\Bundle\EcbBundle\Ecb\Adapter
     php_mag_ecb.adapter.endpoint: http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
+    php_mag_ecb.rates.class:      KIJ\Bundle\EcbBundle\Ecb\ExchangeRates
 
 services:
     php_mag_ecb:
-        class: %php_mag_ecb.httpclient.class%
+        class:    %php_mag_ecb.httpclient.class%
 
     php_mag_ecb.parser:
-        class: %php_mag_ecb.parser.class%
+        class:    %php_mag_ecb.parser.class%
 
     php_mag_ecb.adapter:
-        class:    %php_mag_ecb.adapter.class%
-        argument: [@php_mag_ecb.httpclient, @php_mag_ecb.adapter.endpoint]
+        class:       %php_mag_ecb.adapter.class%
+        argument:   [@php_mag_ecb.httpclient, @php_mag_ecb.adapter.endpoint]
+
+    php_mag_ecb.rates:
+        class:    %php_mag_ecb.rates.class%
+        argument:   [@php_mag_ecb.adapter , @php_mag_ecb.adapter]
