@@ -1,6 +1,8 @@
 parameters:
     php_mag_ecb.httpclient.class: Guzzle\Http\Client
     php_mag_ecb.parser.class:     KIJ\Bundle\EcbBundle\Ecb\Parser
+    php_mag_ecb.adapter.class:    KIJ\Bundle\EcbBundle\Ecb\Adapter
+    php_mag_ecb.adapter.endpoint: http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml
 
 services:
     php_mag_ecb:
@@ -8,3 +10,7 @@ services:
 
     php_mag_ecb.parser:
         class: %php_mag_ecb.parser.class%
+
+    php_mag_ecb.adapter:
+        class:    %php_mag_ecb.adapter.class%
+        argument: [@php_mag_ecb.httpclient, @php_mag_ecb.adapter.endpoint]
