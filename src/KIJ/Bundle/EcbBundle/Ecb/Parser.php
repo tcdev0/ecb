@@ -5,7 +5,11 @@
     class Parser implements ParserInterface
     {
 
-        function parse ($rawData)
+        /**
+         * @param $rawData
+         * @return array|mixed
+         */
+        public function parse ($rawData)
         {
             $xml = new \SimpleXMLElement($rawData);
             $rates = array();

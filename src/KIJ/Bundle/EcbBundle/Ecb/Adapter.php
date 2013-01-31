@@ -8,13 +8,20 @@
         private $httpAdapter;
         private $endpointUrl;
 
+        /**
+         * @param \Guzzle\Http\ClientInterface $httpAdapter
+         * @param $endpointUrl
+         */
         public function __construct(ClientInterface $httpAdapter, $endpointUrl)
         {
             $this->httpAdapter = $httpAdapter;
             $this->endpointUrl = $endpointUrl;
         }
 
-        function getRawData()
+        /**
+         * @return \Guzzle\Http\EntityBodyInterface|string
+         */
+        public function getRawData()
         {
             $request = $this->httpAdapter->get($this->endpointUrl);
             $response = $request->send();

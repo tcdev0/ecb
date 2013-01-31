@@ -4,5 +4,8 @@
 
     interface AdapterInterface
     {
+        /**
+         * @return string
+         */
         function getRawData();
     }

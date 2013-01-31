@@ -8,6 +8,10 @@
         private $parser;
         private $data;
 
+        /**
+         * @param AdapterInterface $adapter
+         * @param ParserInterface $parser
+         */
         public function __construct(AdapterInterface $adapter, ParserInterface $parser)
         {
             $this->adapter = $adapter;
@@ -15,6 +19,9 @@
             $this->data    = null;
         }
 
+        /**
+         * @return null
+         */
         public function getRates()
         {
             $this->loadData();
@@ -22,6 +29,11 @@
             return $this->data;
         }
 
+        /**
+         * @param $currency
+         * @return mixed
+         * @throws \InvalidArgumentException
+         */
         public function getRate($currency)
         {
             $this->loadData();

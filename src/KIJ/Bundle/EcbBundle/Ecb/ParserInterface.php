@@ -4,5 +4,9 @@
 
     interface ParserInterface
     {
+        /**
+         * @param $rawData
+         * @return mixed
+         */
         function parse($rawData);
     }

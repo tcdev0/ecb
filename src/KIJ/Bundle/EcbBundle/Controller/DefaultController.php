@@ -3,12 +3,40 @@
 namespace KIJ\Bundle\EcbBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
+/**
+ * @Route("/rates")
+ */
 class DefaultController extends Controller
 {
-    public function indexAction()
+    /**
+     * @Route("/")
+     * @Template()
+     * @Method("GET")
+     */
+    public function listAction()
     {
-        //return $this->render('KIJEcbBundle:Default:index.html.twig', array('name' => $name));
-        $this->get('php_mag_ecb.rates')->getRates();
+        return array(
+            'rates' => $this->get('php_mag_ecb.rates')->getRates()
+        );
+    }
+
+    /**
+     * @Route("/{rate}")
+     * @Method("GET")
+     */
+    public function showAction($rate)
+    {
+        try {
+            $rate = $this->get('php_mag_ecb.rates')->getRate($rate);
+        } catch (\InvalidArgumentException $e) {
+            throw $this->createNotFoundException('Unknown currency');
+        }
+
+        return new Response($rate);
     }
 }
