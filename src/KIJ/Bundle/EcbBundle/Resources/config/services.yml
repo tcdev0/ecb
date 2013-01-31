@@ -14,8 +14,8 @@ services:
 
     php_mag_ecb.adapter:
         class:       %php_mag_ecb.adapter.class%
-        argument:   [@php_mag_ecb.httpclient, @php_mag_ecb.adapter.endpoint]
+        argument:   [{type: service, id: php_mag_ecb.httpclient}, %php_mag_ecb.adapter.endpoint%]
 
     php_mag_ecb.rates:
         class:    %php_mag_ecb.rates.class%
-        argument:   [@php_mag_ecb.adapter , @php_mag_ecb.adapter]
+        argument:   [{type: service, id: php_mag_ecb.adapter}, {type: service, id: php_mag_ecb.adapter}]
