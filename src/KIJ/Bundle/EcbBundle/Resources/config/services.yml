@@ -11,6 +11,7 @@ services:
 
     php_mag_ecb.parser:
         class: %php_mag_ecb.parser.class%
+        public: false
 
     php_mag_ecb.adapter:
         class: %php_mag_ecb.adapter.class%
@@ -23,3 +24,7 @@ services:
         arguments:
         - @php_mag_ecb.adapter
         - @php_mag_ecb.parser
+        public: false
+
+    ecb.rates:
+        alias: php_mag_ecb.rates

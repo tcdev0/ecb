@@ -21,7 +21,7 @@ class DefaultController extends Controller
     public function listAction()
     {
         return array(
-            'rates' => $this->get('php_mag_ecb.rates')->getRates()
+            'rates' => $this->get('ecb.rates')->getRates()
         );
     }
 
@@ -32,7 +32,7 @@ class DefaultController extends Controller
     public function showAction($rate)
     {
         try {
-            $rate = $this->get('php_mag_ecb.rates')->getRate($rate);
+            $rate = $this->get('ecb.rates')->getRate($rate);
         } catch (\InvalidArgumentException $e) {
             throw $this->createNotFoundException('Unknown currency');
         }
