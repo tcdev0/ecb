@@ -27,3 +27,6 @@ assetic:
 
 kij_ecb:
     timeout: 20
+
+parameters:
+    kij_ecb.adapter.class: KIJ\Bundle\EcbBundle\Ecb\MockAdapter
