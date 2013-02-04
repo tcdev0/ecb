@@ -24,3 +24,6 @@ assetic:
 
 #swiftmailer:
 #    delivery_address: me@example.com
+
+kij_ecb:
+    timeout: 20

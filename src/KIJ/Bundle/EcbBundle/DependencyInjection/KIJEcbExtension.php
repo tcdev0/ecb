@@ -24,5 +24,8 @@ class KIJEcbExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        $container->setParameter('kij_ecb.httpclient.timeout', $config['timeout']);
+        $container->setParameter('kij_ecb.adapter.endpoint', $config['endpoint']);
     }
 }

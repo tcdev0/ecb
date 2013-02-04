@@ -20,9 +20,30 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('kij_ecb');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->scalarNode('timeout')
+                    ->info('sets the timeout for http requests to the webservice')
+                    ->defaultValue(5)
+                    ->validate()
+                        ->ifTrue(function($value) {
+                            return !is_numeric($value) || $value <= 0;
+                        })
+                        ->thenInvalid('The configuration value for "timeout" must be numeric and greater 0.')
+                    ->end()
+                ->end()
+                ->scalarNode('endpoint')
+                    ->info('sets url of the exchange rates webservice')
+                    ->defaultValue('http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml')
+                    ->validate()
+                        ->ifTrue(function($value) {
+                            return !filter_var($value, \FILTER_VALIDATE_URL);
+                        })
+                        ->thenInvalid('The configuration value for "endpoint" must be a valid url.')
+                    ->end()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }
